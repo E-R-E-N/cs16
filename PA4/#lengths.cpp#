@@ -1,0 +1,63 @@
+// Zhengyan Yu, 02/19/18
+
+#include <iostream>
+using namespace std;
+
+// Prototypes of 4 functions used by main (must implement below):
+void get_length(int &feet, int &inches);
+double feet_plus_fraction(int feet, int inches);
+void convert(double dfeet, int &meters, int &centimeters);
+void show_results(int meters, int centimeters);
+
+int main() {
+  int feet = 0, inches = 0, meters = 0, centimeters = 0, jdg;
+  double dfeet;
+  char c1;
+  do
+    {
+      cout<<"enter 1 for feet,inches to meters,centimeters, or"<<endl
+	  <<"enter 2 for meters,centimeters to feet,inches"<<endl;
+      cin>>jdg;
+      while((jdg!=2)&&(jdg!=1)){
+	cout<<"enter 1 or 2 only"<<endl;
+	  cin>>jdg;
+	}
+	if(jdg=1){
+	get_length(feet, inches);
+	dfeet = feet_plus_fraction(feet, inches);
+	convert(dfeet, meters, centimeters);
+	show_results(meters, centimeters);
+      }
+      else{\
+      }
+      cin.get();
+      cout<<"convert more?"<<endl;
+      cin.get(c1);
+    }while((c1=='y')||(c1=='Y'));
+
+    return 0;
+}
+
+// IMPLEMENT THE 4 REQUIRED FUNCTIONS BELOW THIS COMMENT
+void get_length(int &feet, int &inches)
+{
+  cout<<"enter feet and inches"<<endl;
+  cin>>feet>>inches;
+  return;
+}
+  
+double feet_plus_fraction(int feet, int inches)
+{
+  return feet+static_cast<double>(inches)/12;
+}
+
+void convert(double dfeet, int &meters, int &centimeters)
+{
+  meters=static_cast<int>(dfeet*.3048);
+  centimeters=static_cast<int>(((dfeet*.3048)-meters)*100);
+    }
+
+void show_results(int meters, int centimeters)
+    {
+      cout<<"conversion: "<<meters<<" meters and "<<centimeters<<" centimeters"<<endl;
+    }
